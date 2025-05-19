@@ -1,7 +1,8 @@
 const TelegramBot = require('node-telegram-bot-api');
-const bot = new TelegramBot('7319647197:AAFTGYxaH4G926LZZt02KNyvtdCm64ZkzYg', { polling: true });
+require('dotenv').config(); // .env fayldan o‘qish uchun
+
+const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
 
 bot.on('message', (msg) => {
-  const chatId = msg.chat.id;
-  bot.sendMessage(chatId, 'Salom! Sizning xabaringiz qabul qilindi.');
+    bot.sendMessage(msg.chat.id, 'Salom, bot ishga tushdi!');
 });
